@@ -8,7 +8,7 @@ function isTemplate(node) {
   );
 }
 
-const layoutHook = (config) => (siteData) => {
+const listTemplateHook = (config) => (siteData) => {
   siteData.routes.forEach((node) => {
     if (node.type == "page" && !isTemplate(node)) {
       const excerpt = excerptHtml(node.content, config);
@@ -21,7 +21,7 @@ const layoutHook = (config) => (siteData) => {
 module.exports = (config) => {
   return {
     hooks: {
-      layout: layoutHook(config),
+      listTemplate: listTemplateHook(config),
     },
   };
 };
